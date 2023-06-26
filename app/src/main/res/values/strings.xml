@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MeliTests</string>
+    <string name="hint_search">Buscar en Mercado Libre</string>
 </resources>
