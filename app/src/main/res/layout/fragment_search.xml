@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/meli_yellow">
+    android:background="@color/meli_yellow"
+    android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edtSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_search"
-        app:layout_constraintTop_toTopOf="parent"
-        android:drawableStart="@drawable/ic_search_white"
-        android:drawablePadding="@dimen/margin_m"
-        android:maxLines="1"
-        android:saveEnabled="true"
-        android:inputType="text"
-        android:imeOptions="actionSearch"
+        android:layout_marginHorizontal="@dimen/margin_m"
         android:layout_marginTop="@dimen/margin_xl"
-        android:layout_marginHorizontal="@dimen/margin_m"/>
+        android:background="@drawable/search_drawable"
+        android:drawableStart="@drawable/ic_search_white"
+        android:drawablePadding="@dimen/padding_m"
+        android:hint="@string/hint_search"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="@dimen/padding_m"
+        android:saveEnabled="true"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
