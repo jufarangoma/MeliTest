@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Margin -->
     <dimen name="margin_m">16dp</dimen>
     <dimen name="margin_xl">32dp</dimen>
-
-    <!-- Padding -->
-    <dimen name="padding_m">16dp</dimen>
 </resources>
