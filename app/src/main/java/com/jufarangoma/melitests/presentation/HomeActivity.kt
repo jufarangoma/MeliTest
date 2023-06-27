@@ -3,7 +3,9 @@ package com.jufarangoma.melitests.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.jufarangoma.melitests.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
