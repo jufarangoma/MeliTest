@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.jufarangoma.melitests.R
 import com.jufarangoma.melitests.databinding.FragmentSearchBinding
-import com.jufarangoma.melitests.presentation.states.SearchState
+import com.jufarangoma.melitests.presentation.RequestState
 import com.jufarangoma.melitests.presentation.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,11 +37,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun initObservers() {
-        searchViewModel.liveDataSearchState.observe(viewLifecycleOwner) { searchState ->
+        searchViewModel.liveDataRequestState.observe(viewLifecycleOwner) { searchState ->
             when (searchState) {
-                is SearchState.Loading -> showLoading()
-                is SearchState.Success -> navigateToListProducts()
-                is SearchState.Error -> showException()
+                is RequestState.Loading -> showLoading()
+                is RequestState.Success -> navigateToListProducts()
+                is RequestState.Error -> showException()
                 else -> Unit
             }
         }

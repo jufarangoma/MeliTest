@@ -16,9 +16,11 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txvProductDetail"
+                android:id="@+id/txvProductDetailName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_l"
+                android:textColor="@color/black"/>
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPagerProductdetail"
@@ -43,7 +45,8 @@
                 android:drawablePadding="@dimen/padding_s"
                 android:gravity="center"
                 android:textColor="@color/green_discount"
-                tools:text="Cuentas con envio gratis" />
+                android:text="@string/free_delivery"
+                android:visibility="gone"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txvProductDetailWarranty"
@@ -63,7 +66,8 @@
                 android:id="@+id/rcvProductDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_s" />
+                android:layout_marginTop="@dimen/margin_s"
+                tools:listitem="@layout/item_attribute"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>

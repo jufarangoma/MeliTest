@@ -11,7 +11,7 @@ fun Double?.isNullOrEmpty(): Boolean {
     }
 }
 
-fun Double.toMoney(): String {
+fun Double?.toMoney(): String {
     val format = DecimalFormat()
     val currencyInstance = Currency.getInstance("USD")
     format.apply {
