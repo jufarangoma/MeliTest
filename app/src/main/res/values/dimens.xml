@@ -7,6 +7,7 @@
     <dimen name="margin_xl">32dp</dimen>
 
     <!-- Padding -->
+    <dimen name="padding_s">8dp</dimen>
     <dimen name="padding_m">16dp</dimen>
 
     <!-- Common-->

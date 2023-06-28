@@ -4,6 +4,7 @@
     <string name="seller">Vendido por %s</string>
     <string name="product_discount">%d%% OFF</string>
     <string name="fee">en 36x de %s</string>
+    <string name="product_atributes">Atributos</string>
 
     <!-- Exceptions -->
     <string name="exception.empty_list_products">No encontramos publicaciones</string>
