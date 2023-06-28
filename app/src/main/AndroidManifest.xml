@@ -13,16 +13,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MeliTests"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
         <activity
             android:name="com.jufarangoma.melitests.presentation.HomeActivity"
+            android:configChanges="orientation"
             android:exported="true"
             android:screenOrientation="fullSensor"
-            android:configChanges="orientation"
             android:theme="@style/LauncherTheme">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

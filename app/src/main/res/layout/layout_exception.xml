@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lnlEmptyProducts"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        app:srcCompat="@drawable/ic_search_grey"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvTitleException"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_m"
+        android:text="@string/exception.empty_list_products"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_l" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvSubtitleException"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_m"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_m" />
+</androidx.appcompat.widget.LinearLayoutCompat>

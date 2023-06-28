@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="meli_yellow">#FFE700</color>
+    <color name="green_discount">#2A970C</color>
 </resources>
