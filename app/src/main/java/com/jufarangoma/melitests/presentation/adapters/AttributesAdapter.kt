@@ -11,7 +11,7 @@ class AttributesAdapter : RecyclerView.Adapter<AttributesAdapter.AttributesViewH
 
     private val arrayOfAttributes: ArrayList<Attribute> = arrayListOf()
 
-    fun setList(attributes: List<Attribute>){
+    fun setList(attributes: List<Attribute>) {
         arrayOfAttributes.clear()
         arrayOfAttributes.addAll(attributes)
         notifyDataSetChanged()

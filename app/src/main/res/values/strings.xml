@@ -6,7 +6,7 @@
     <string name="fee">en 36x de %s</string>
     <string name="product_atributes">Caracteristicas</string>
     <string name="free_delivery">Cuentas con envio gratis</string>
-    <string name="counter_pictures">%1d/%2d</string>
+    <string name="counter_pictures">%1d /%2d</string>
 
     <!-- Exceptions -->
     <string name="exception.empty_list_products">No encontramos publicaciones</string>

@@ -1,7 +1,7 @@
 package com.jufarangoma.melitests.data.models
 
-import com.jufarangoma.melitests.domain.entities.Attribute as AttributesDomain
 import com.google.gson.annotations.SerializedName
+import com.jufarangoma.melitests.domain.entities.Attribute as AttributesDomain
 import com.jufarangoma.melitests.domain.entities.ProductDetail
 
 data class ProductDetailDTO(

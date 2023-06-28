@@ -12,7 +12,7 @@ class PictureFragment : Fragment() {
 
     private var binding: ItemPictureBinding? = null
     private val url: String
-        get() = arguments?.getString(URL, "") ?: ""
+        get() = arguments?.getString(URL, String()) ?: String()
 
     override fun onCreateView(
         inflater: LayoutInflater,
