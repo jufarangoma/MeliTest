@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imvProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_m"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/im_placeholder" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvProductName"
+        style="@style/TextViewTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_s"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imvProduct"
+        app:layout_constraintTop_toTopOf="@id/imvProduct"
+        tools:text="Motorola G5" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvProductPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_s"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_l"
+        app:layout_constraintStart_toEndOf="@id/imvProduct"
+        app:layout_constraintTop_toBottomOf="@id/txvProductName"
+        tools:text="$300.000" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvProductDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_s"
+        android:layout_marginStart="@dimen/margin_m"
+        android:textColor="@color/green_discount"
+        android:textSize="@dimen/text_s"
+        app:layout_constraintBottom_toBottomOf="@id/txvProductPrice"
+        app:layout_constraintStart_toEndOf="@id/txvProductPrice"
+        app:layout_constraintTop_toTopOf="@id/txvProductPrice"
+        tools:text="53% Off" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvProductFee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_s"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_s"
+        app:layout_constraintStart_toEndOf="@id/imvProduct"
+        app:layout_constraintTop_toBottomOf="@id/txvProductPrice"
+        tools:text="en 36x $ 2.780" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvProductSeller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_s"
+        android:layout_marginTop="@dimen/margin_m"
+        android:textSize="@dimen/text_s"
+        app:layout_constraintStart_toEndOf="@id/imvProduct"
+        app:layout_constraintTop_toBottomOf="@id/txvProductFee"
+        tools:text="Vendido por Juanito" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

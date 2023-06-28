@@ -9,6 +9,16 @@
         android:id="@+id/frgSearch"
         android:name="com.jufarangoma.melitests.presentation.fragments.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search"/>
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_frgSearch_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.jufarangoma.melitests.presentation.fragments.ProductsFragment"
+        android:label="ProductsFragment"
+        tools:layout="@layout/fragment_products"/>
 
 </navigation>

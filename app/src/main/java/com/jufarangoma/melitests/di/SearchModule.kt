@@ -1,5 +1,6 @@
 package com.jufarangoma.melitests.di
 
+import androidx.lifecycle.MutableLiveData
 import com.jufarangoma.melitests.data.api.SearchApi
 import com.jufarangoma.melitests.data.repositories.SearchRepositoryImpl
 import com.jufarangoma.melitests.domain.SearchRepository
@@ -20,7 +21,12 @@ class SearchModule {
     fun searchViewModel(
         searchRepository: SearchRepository,
         coroutineDispatcher: CoroutineDispatcher
-    ) = SearchViewModel(searchRepository, coroutineDispatcher)
+    ) = SearchViewModel(
+        searchRepository = searchRepository,
+        coroutineDispatcher = coroutineDispatcher,
+        arrayListOfProducts = arrayListOf(),
+        mutableLiveData = MutableLiveData()
+    )
 
     @Provides
     @ViewModelScoped

@@ -12,9 +12,10 @@ class SearchRepositoryImpl(
     override fun search(query: String) =
         flow {
             val result = searchApi.search(query)
-            emit(result)
-        }.catch {
-            println("+++ $it")
-            emit(it)
+            val listProducts = result.results.map { it.mapToDomainEntity() }
+            emit(Result.success(listProducts))
+        }.catch { throwable ->
+            // If I had documentation about network exceptions I would add a mapper class to manage it
+            emit(Result.failure(throwable))
         }
 }
