@@ -10,7 +10,9 @@ import com.jufarangoma.melitests.domain.entities.ProductEntity
 import com.jufarangoma.melitests.utils.setImage
 import com.jufarangoma.melitests.utils.toMoney
 
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
+class ProductsAdapter(
+    private val onItemClicked: (String) -> Unit
+) : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
 
     private val arrayListProducts: ArrayList<ProductEntity> = arrayListOf()
 
@@ -37,6 +39,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
         val item = arrayListProducts[position]
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+            onItemClicked.invoke(item.id)
+        }
     }
 
     inner class ProductsViewHolder(private val binding: ItemProductBinding) :

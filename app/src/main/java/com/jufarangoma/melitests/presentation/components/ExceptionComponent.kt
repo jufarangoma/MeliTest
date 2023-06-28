@@ -2,6 +2,7 @@ package com.jufarangoma.melitests.presentation.components
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
@@ -19,5 +20,6 @@ class ExceptionComponent @JvmOverloads constructor(
         binding.txvTitleException.text = title
         binding.txvSubtitleException.text = description
         isVisible = true
+        Log.e("EXCEPTION_VIEW", "title: $title")
     }
 }

@@ -19,6 +19,15 @@
         android:id="@+id/productsFragment"
         android:name="com.jufarangoma.melitests.presentation.fragments.ProductsFragment"
         android:label="ProductsFragment"
-        tools:layout="@layout/fragment_products"/>
+        tools:layout="@layout/fragment_products">
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.jufarangoma.melitests.presentation.fragments.ProductDetailFragment"
+        android:label="ProductDetailFragment"
+        tools:layout="@layout/fragment_product_detail" />
 
 </navigation>

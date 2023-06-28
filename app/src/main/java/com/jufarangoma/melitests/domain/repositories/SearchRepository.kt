@@ -1,4 +1,4 @@
-package com.jufarangoma.melitests.domain
+package com.jufarangoma.melitests.domain.repositories
 
 import com.jufarangoma.melitests.domain.entities.ProductEntity
 import kotlinx.coroutines.flow.Flow

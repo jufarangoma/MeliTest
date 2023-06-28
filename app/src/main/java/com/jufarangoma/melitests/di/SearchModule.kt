@@ -3,7 +3,7 @@ package com.jufarangoma.melitests.di
 import androidx.lifecycle.MutableLiveData
 import com.jufarangoma.melitests.data.api.SearchApi
 import com.jufarangoma.melitests.data.repositories.SearchRepositoryImpl
-import com.jufarangoma.melitests.domain.SearchRepository
+import com.jufarangoma.melitests.domain.repositories.SearchRepository
 import com.jufarangoma.melitests.presentation.viewmodels.SearchViewModel
 import dagger.Module
 import dagger.Provides
@@ -30,13 +30,13 @@ class SearchModule {
 
     @Provides
     @ViewModelScoped
-    fun searchApiProvider(
-        retrofit: Retrofit
-    ): SearchApi = retrofit.create(SearchApi::class.java)
-
-    @Provides
-    @ViewModelScoped
     fun searchRepository(
         searchApi: SearchApi
     ): SearchRepository = SearchRepositoryImpl(searchApi)
+
+    @Provides
+    @ViewModelScoped
+    fun searchApiProvider(
+        retrofit: Retrofit
+    ): SearchApi = retrofit.create(SearchApi::class.java)
 }

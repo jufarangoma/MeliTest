@@ -1,5 +1,8 @@
 package com.jufarangoma.melitests.utils
 
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.jufarangoma.melitests.R
 import java.text.DecimalFormat
 import java.util.Currency
 
@@ -11,7 +14,7 @@ fun Double?.isNullOrEmpty(): Boolean {
     }
 }
 
-fun Double.toMoney(): String {
+fun Double?.toMoney(): String {
     val format = DecimalFormat()
     val currencyInstance = Currency.getInstance("USD")
     format.apply {
@@ -20,4 +23,11 @@ fun Double.toMoney(): String {
     }
 
     return currencyInstance.symbol + format.format(this)
+}
+
+fun ImageView.setImage(url: String) {
+    Glide.with(context)
+        .load(url)
+        .placeholder(R.drawable.im_placeholder)
+        .into(this)
 }

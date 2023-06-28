@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jufarangoma.melitests.domain.SearchRepository
 import com.jufarangoma.melitests.domain.entities.ProductEntity
-import com.jufarangoma.melitests.presentation.states.SearchState
+import com.jufarangoma.melitests.domain.repositories.SearchRepository
+import com.jufarangoma.melitests.presentation.RequestState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
@@ -18,22 +18,22 @@ class SearchViewModel @Inject constructor(
     private val searchRepository: SearchRepository,
     private val coroutineDispatcher: CoroutineDispatcher,
     private val arrayListOfProducts: ArrayList<ProductEntity>,
-    private val mutableLiveData: MutableLiveData<SearchState>
+    private val mutableLiveData: MutableLiveData<RequestState>
 ) : ViewModel() {
 
-    val liveDataSearchState: LiveData<SearchState> = mutableLiveData
+    val liveDataRequestState: LiveData<RequestState> = mutableLiveData
     val listOfProducts: List<ProductEntity> = arrayListOfProducts
     fun search(query: String) {
         viewModelScope.launch(coroutineDispatcher) {
             searchRepository.search(query).onStart {
-                mutableLiveData.postValue(SearchState.Loading)
+                mutableLiveData.postValue(RequestState.Loading)
             }.collect {
                 it.fold(
                     onSuccess = { productsList ->
                         successFlow(productsList)
                     },
                     onFailure = {
-                        mutableLiveData.postValue(SearchState.Error)
+                        mutableLiveData.postValue(RequestState.Error)
                     }
                 )
             }
@@ -43,10 +43,10 @@ class SearchViewModel @Inject constructor(
     private fun successFlow(productsList: List<ProductEntity>) {
         arrayListOfProducts.clear()
         arrayListOfProducts.addAll(productsList)
-        mutableLiveData.postValue(SearchState.Success)
+        mutableLiveData.postValue(RequestState.Success)
     }
 
     fun clearStates() {
-        mutableLiveData.postValue(SearchState.Empty)
+        mutableLiveData.postValue(RequestState.Empty)
     }
 }

@@ -20,6 +20,7 @@
         android:layout_marginTop="@dimen/margin_m"
         android:text="@string/exception.empty_list_products"
         android:textColor="@color/black"
+        android:textAlignment="center"
         android:textSize="@dimen/text_l" />
 
     <androidx.appcompat.widget.AppCompatTextView
