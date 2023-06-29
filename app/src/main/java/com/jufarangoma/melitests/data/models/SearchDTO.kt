@@ -10,7 +10,7 @@ data class SearchDTO(
 
 data class Product(
     @SerializedName("id")
-    var id: String? = String(),
+    var id: String? = null,
     @SerializedName("title")
     var title: String? = null,
     @SerializedName("permalink")
@@ -22,9 +22,9 @@ data class Product(
     @SerializedName("domain_id")
     var domainId: String? = null,
     @SerializedName("thumbnail")
-    var thumbnail: String? = String(),
+    var thumbnail: String? = null,
     @SerializedName("price")
-    var price: Double? = 0.0,
+    var price: Double? = null,
     @SerializedName("original_price")
     var originalPrice: Double? = null,
     @SerializedName("official_store_name")
