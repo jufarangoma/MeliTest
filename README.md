@@ -2,6 +2,9 @@
 
 Prueba técnica de MercadoLibre
 
+<img src="https://github.com/jufarangoma/CropBitmapFromShape/blob/master/meliTest.gif"/>
+
+
 Estructura del proyecto
 
 - data: Todas las implementaciones a los repositorios, objetos DTO y endpoints
@@ -63,4 +66,3 @@ Implemente pruebas unitarias para las tres capas y con ayuda de JaCoCo valide la
 <img src="https://github.com/jufarangoma/CropBitmapFromShape/blob/master/jacoco6.png"/>
 <img src="https://github.com/jufarangoma/CropBitmapFromShape/blob/master/jacoco7.png"/>
 <img src="https://github.com/jufarangoma/CropBitmapFromShape/blob/master/jacoco8.png"/>
-
