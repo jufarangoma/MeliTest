@@ -19,18 +19,16 @@ class ExampleDomainExceptionRepositoryImpl : CommonErrors(), DomainExceptionRepo
 
     override fun manageException(exception: Throwable): DomainException {
         return if (exception is HttpException) {
+            Log.e(
+                "HTTP_EXCEPTION",
+                "code: ${exception.code()}",
+                exception
+            )
             when (exception.code()) {
                 HttpURLConnection.HTTP_UNAUTHORIZED -> Unauthorized
                 HttpURLConnection.HTTP_CONFLICT -> DomainException("Controlled busines logic")
                 HttpURLConnection.HTTP_BAD_GATEWAY -> InternalServerError
-                else -> {
-                    Log.e(
-                        "HTTP_UNKNOWN",
-                        "code: ${exception.code()}",
-                        exception
-                    )
-                    HttpErrorCode(exception.code(), exception.message())
-                }
+                else -> HttpErrorCode(exception.code(), exception.message())
             }
         } else {
             manageCommonException(exception)

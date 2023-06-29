@@ -63,4 +63,9 @@ class ProductsFragment : Fragment() {
             isVisible = true
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+    }
 }

@@ -17,8 +17,7 @@ class SearchRepositoryImpl(
         val listProducts = result.results.map { it.mapToDomainEntity() }
         emit(Result.success(listProducts))
     }.catch { throwable ->
-        // If I had documentation about network exceptions I would add a mapper class to manage it
-        Log.e("NETWORK_ERROR", "search $query exception", throwable)
+        Log.e("SEARCH_ERROR", "search $query exception", throwable)
         emit(Result.failure(exceptionRepository.manageException(throwable)))
     }
 }

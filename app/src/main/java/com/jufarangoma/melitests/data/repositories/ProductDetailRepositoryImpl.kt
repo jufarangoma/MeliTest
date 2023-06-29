@@ -16,8 +16,7 @@ class ProductDetailRepositoryImpl(
         val result = productDetailApi.getProductDetail(id)
         emit(Result.success(result.mapToEntity()))
     }.catch { throwable ->
-        // If I had documentation about network exceptions I would add a mapper class to manage it
-        Log.e("NETWORK_ERROR", "Get product detail exception", throwable)
+        Log.e("PRODUCT_DETAIL_ERROR", "Get product detail exception", throwable)
         emit(Result.failure(exceptionRepository.manageException(throwable)))
     }
 }
