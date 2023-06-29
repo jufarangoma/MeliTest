@@ -11,6 +11,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.jufarangoma.melitests.R
 import com.jufarangoma.melitests.databinding.FragmentSearchBinding
+import com.jufarangoma.melitests.domain.exceptions.DomainException
+import com.jufarangoma.melitests.domain.exceptions.InternalServerError
+import com.jufarangoma.melitests.domain.exceptions.Unauthorized
 import com.jufarangoma.melitests.presentation.RequestState
 import com.jufarangoma.melitests.presentation.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +44,7 @@ class SearchFragment : Fragment() {
             when (searchState) {
                 is RequestState.Loading -> showLoading()
                 is RequestState.Success -> navigateToListProducts()
-                is RequestState.Error -> showException()
+                is RequestState.Error -> showException(searchState.exception)
                 else -> Unit
             }
         }
@@ -56,12 +59,17 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun showException() {
+    private fun showException(exception: DomainException) {
         binding?.let { searchBinding ->
             with(searchBinding) {
+                val title = when (exception) {
+                    is Unauthorized -> R.string.exception_title_unauthorized
+                    is InternalServerError -> R.string.exception_title_internal_sever_error
+                    else -> R.string.exception_title_product_detail
+                }
                 loadingProducts.isVisible = false
                 viewException.setView(
-                    title = getString(R.string.exception_title_check_internet),
+                    title = getString(title),
                     description = getString(R.string.exception_description_check_connection)
                 )
             }

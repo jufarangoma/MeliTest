@@ -12,6 +12,9 @@ import androidx.viewpager.widget.ViewPager
 import com.jufarangoma.melitests.R
 import com.jufarangoma.melitests.databinding.FragmentProductDetailBinding
 import com.jufarangoma.melitests.domain.entities.Attribute
+import com.jufarangoma.melitests.domain.exceptions.DomainException
+import com.jufarangoma.melitests.domain.exceptions.InternalServerError
+import com.jufarangoma.melitests.domain.exceptions.Unauthorized
 import com.jufarangoma.melitests.presentation.RequestState
 import com.jufarangoma.melitests.presentation.adapters.AttributesAdapter
 import com.jufarangoma.melitests.presentation.adapters.PicturesAdapter
@@ -78,16 +81,21 @@ class ProductDetailFragment : Fragment() {
             when (requestState) {
                 is RequestState.Loading -> binding?.loadingProductDetail?.isVisible = true
                 is RequestState.Success -> showProductDetail()
-                is RequestState.Error -> showError()
+                is RequestState.Error -> showError(requestState.exception)
                 is RequestState.Empty -> Unit
             }
         }
     }
 
-    private fun showError() {
+    private fun showError(exception: DomainException) {
+        val title = when (exception) {
+            is Unauthorized -> R.string.exception_title_unauthorized
+            is InternalServerError -> R.string.exception_title_internal_sever_error
+            else -> R.string.exception_title_product_detail
+        }
         binding?.loadingProductDetail?.isVisible = false
         binding?.exceptionProductDetail?.setView(
-            title = getString(R.string.exception_title_product_detail),
+            title = getString(title),
             description = getString(R.string.exception_description_check_connection)
         )
     }

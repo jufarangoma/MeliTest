@@ -3,6 +3,7 @@ package com.jufarangoma.melitests.di
 import androidx.lifecycle.MutableLiveData
 import com.jufarangoma.melitests.data.api.ProductDetailApi
 import com.jufarangoma.melitests.data.repositories.ProductDetailRepositoryImpl
+import com.jufarangoma.melitests.domain.repositories.DomainExceptionRepository
 import com.jufarangoma.melitests.domain.repositories.ProductDetailRepository
 import com.jufarangoma.melitests.presentation.viewmodels.ProductDetailViewModel
 import dagger.Module
@@ -30,8 +31,12 @@ class ProductDetailModule {
     @Provides
     @ViewModelScoped
     fun productDetailRepository(
-        productDetailApi: ProductDetailApi
-    ): ProductDetailRepository = ProductDetailRepositoryImpl(productDetailApi)
+        productDetailApi: ProductDetailApi,
+        domainExceptionRepository: DomainExceptionRepository
+    ): ProductDetailRepository = ProductDetailRepositoryImpl(
+        productDetailApi = productDetailApi,
+        exceptionRepository = domainExceptionRepository
+    )
 
     @Provides
     @ViewModelScoped

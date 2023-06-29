@@ -13,4 +13,6 @@
     <string name="exception.title_check_internet">¡Parece que no hay internet!</string>
     <string name="exception.description_check_connection">Verifica tu conexión para seguir navegando</string>
     <string name="exception.title_product_detail">No pudimos cargar la información del producto</string>
+    <string name="exception.title_unauthorized">Debes iniciar sesión para poder continuar</string>
+    <string name="exception.title_internal_sever_error">Error de servidor</string>
 </resources>

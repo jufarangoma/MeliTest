@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jufarangoma.melitests.domain.entities.ProductDetail
+import com.jufarangoma.melitests.domain.exceptions.DomainException
+import com.jufarangoma.melitests.domain.exceptions.UnknownException
 import com.jufarangoma.melitests.domain.repositories.ProductDetailRepository
 import com.jufarangoma.melitests.presentation.RequestState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,13 +38,15 @@ class ProductDetailViewModel @Inject constructor(
                             productDetail = productDetailResponse
                             mutableLiveData.postValue(RequestState.Success)
                         },
-                        onFailure = {
-                            mutableLiveData.postValue(RequestState.Error)
+                        onFailure = { throwable ->
+                            mutableLiveData.postValue(
+                                RequestState.Error(throwable as DomainException)
+                            )
                         }
                     )
                 }
             } ?: kotlin.run {
-                mutableLiveData.postValue(RequestState.Error)
+                mutableLiveData.postValue(RequestState.Error(UnknownException))
             }
         }
     }
