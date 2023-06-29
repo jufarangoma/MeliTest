@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:paddingBottom="@dimen/padding_xs">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvAttributeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/grey_name_background"
+        android:textColor="@color/white"
+        tools:text="Marca"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txvAttributeValue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/grey_value_background"
+        android:textColor="@color/black"
+        tools:text="Samsung" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
