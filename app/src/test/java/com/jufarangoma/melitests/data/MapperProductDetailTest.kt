@@ -6,7 +6,7 @@ import com.jufarangoma.melitests.data.models.ProductDetailDTO
 import com.jufarangoma.melitests.data.models.Shipping
 import org.junit.Test
 
-class MapperProductDetail {
+class MapperProductDetailTest {
 
     @Test
     fun mapToDomainEntityNull() {
@@ -47,7 +47,7 @@ class MapperProductDetail {
         assert(mapper.warranty == "2 años")
     }
 
-    fun mapToAttributes(){
+    fun mapToAttributes() {
         val attributes = Attributes("Marca", "Motorola")
 
         val mapper = attributes.mapToDomain()

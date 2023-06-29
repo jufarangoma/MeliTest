@@ -11,7 +11,7 @@ import retrofit2.HttpException
 class ExampleDomainExceptionRepositoryImpl : CommonErrors(), DomainExceptionRepository {
 
     /**
-     * For the example I assume that codes 409 is a reserved code to catch business logic exception,
+     * For the example I assume that code 409 is a reserved code to catch business logic exception,
      * I could validate some id to manage the exception
      */
 
