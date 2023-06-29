@@ -22,7 +22,7 @@ Librerias utilizadas
 
 ## Arquitectura utilizada
 
-<img src="https://github.com/jufarangoma/CropBitmapFromShape/blob/master/arch.png" width="240" height="427"/>
+<img src="https://github.com/jufarangoma/CropBitmapFromShape/blob/master/arch.png"/>
 
 Arriba se muestra el modelo que use para la arquitectura de la app, los componentes que se
 encuentran con linea cortada no fueron incluidos en la prueba dado que no fueron necesarios, sin
