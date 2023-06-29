@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jufarangoma.melitests.domain.entities.ProductEntity
+import com.jufarangoma.melitests.domain.exceptions.DomainException
 import com.jufarangoma.melitests.domain.repositories.SearchRepository
 import com.jufarangoma.melitests.presentation.RequestState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,8 +33,8 @@ class SearchViewModel @Inject constructor(
                     onSuccess = { productsList ->
                         successFlow(productsList)
                     },
-                    onFailure = {
-                        mutableLiveData.postValue(RequestState.Error)
+                    onFailure = { throwable ->
+                        mutableLiveData.postValue(RequestState.Error(throwable as DomainException))
                     }
                 )
             }

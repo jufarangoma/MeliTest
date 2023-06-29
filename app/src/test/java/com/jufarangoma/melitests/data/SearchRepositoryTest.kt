@@ -23,7 +23,7 @@ class SearchRepositoryTest {
 
     private val searchApi = mockk<SearchApi>()
     private val domainExceptionRepository = mockk<DomainExceptionRepository>()
-    lateinit var searchRepository: SearchRepository
+    private lateinit var searchRepository: SearchRepository
 
     @Before
     fun setUp() {

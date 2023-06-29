@@ -1,8 +1,10 @@
 package com.jufarangoma.melitests.data.repositories
 
+import android.util.Log
 import com.jufarangoma.melitests.domain.exceptions.CommonErrors
 import com.jufarangoma.melitests.domain.exceptions.DomainException
 import com.jufarangoma.melitests.domain.exceptions.HttpErrorCode
+import com.jufarangoma.melitests.domain.exceptions.InternalServerError
 import com.jufarangoma.melitests.domain.exceptions.Unauthorized
 import com.jufarangoma.melitests.domain.repositories.DomainExceptionRepository
 import java.net.HttpURLConnection
@@ -20,8 +22,15 @@ class ExampleDomainExceptionRepositoryImpl : CommonErrors(), DomainExceptionRepo
             when (exception.code()) {
                 HttpURLConnection.HTTP_UNAUTHORIZED -> Unauthorized
                 HttpURLConnection.HTTP_CONFLICT -> DomainException("Controlled busines logic")
-                HttpURLConnection.HTTP_BAD_GATEWAY -> DomainException("Internal Server Error")
-                else -> HttpErrorCode(exception.code(), exception.message())
+                HttpURLConnection.HTTP_BAD_GATEWAY -> InternalServerError
+                else -> {
+                    Log.e(
+                        "HTTP_UNKNOWN",
+                        "code: ${exception.code()}",
+                        exception
+                    )
+                    HttpErrorCode(exception.code(), exception.message())
+                }
             }
         } else {
             manageCommonException(exception)

@@ -10,8 +10,10 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.confirmVerified
 import io.mockk.mockk
+import io.mockk.slot
 import io.mockk.verify
 import io.mockk.verifyOrder
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -19,6 +21,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class SearchViewModelTest {
 
     @get:Rule
@@ -75,6 +78,8 @@ class SearchViewModelTest {
     @Test
     fun searchViewModelFailure() = runTest(mainCoroutineRule.testDispatcher) {
         val domainException = DomainException()
+        val slot = slot<RequestState.Error>()
+
         coEvery { searchRepository.search("Motorola") } returns flowOf(
             Result.failure(domainException)
         )
@@ -87,7 +92,7 @@ class SearchViewModelTest {
 
         verifyOrder {
             mutableLiveData.postValue(RequestState.Loading)
-            mutableLiveData.postValue(RequestState.Error)
+            mutableLiveData.postValue(capture(slot))
         }
     }
 

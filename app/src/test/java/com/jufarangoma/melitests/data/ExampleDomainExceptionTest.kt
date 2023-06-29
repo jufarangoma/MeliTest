@@ -3,6 +3,7 @@ package com.jufarangoma.melitests.data
 import com.google.gson.JsonParseException
 import com.jufarangoma.melitests.data.repositories.ExampleDomainExceptionRepositoryImpl
 import com.jufarangoma.melitests.domain.exceptions.HttpErrorCode
+import com.jufarangoma.melitests.domain.exceptions.InternalServerError
 import com.jufarangoma.melitests.domain.exceptions.ParseException
 import com.jufarangoma.melitests.domain.exceptions.TimeOutException
 import com.jufarangoma.melitests.domain.exceptions.Unauthorized
@@ -51,7 +52,7 @@ class ExampleDomainExceptionTest {
         every { httpException.code() } returns 502
 
         val domainException = exampleException.manageException(httpException)
-        assert(domainException.message == "Internal Server Error")
+        assert(domainException is InternalServerError)
 
         verify {
             httpException.code()
@@ -65,8 +66,7 @@ class ExampleDomainExceptionTest {
         val domainException = exampleException.manageException(httpException)
         assert(domainException is HttpErrorCode)
 
-
-        verify(exactly = 2) {
+        verify(exactly = 3) {
             httpException.code()
         }
         verify {

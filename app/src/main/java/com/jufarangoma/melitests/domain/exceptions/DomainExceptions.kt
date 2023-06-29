@@ -8,6 +8,7 @@ object TimeOutException : DomainException()
 object ParseException : DomainException()
 object UnknownException : DomainException()
 object Unauthorized : DomainException()
+object InternalServerError : DomainException()
 
 data class HttpErrorCode(
     val code: Int,
