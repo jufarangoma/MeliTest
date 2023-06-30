@@ -1,16 +1,16 @@
 package com.jufarangoma.melitests.data.repositories
 
 import android.util.Log
-import com.jufarangoma.melitests.domain.exceptions.CommonErrors
 import com.jufarangoma.melitests.domain.exceptions.DomainException
+import com.jufarangoma.melitests.domain.exceptions.DomainExceptionStrategy
 import com.jufarangoma.melitests.domain.exceptions.HttpErrorCode
 import com.jufarangoma.melitests.domain.exceptions.InternalServerError
 import com.jufarangoma.melitests.domain.exceptions.Unauthorized
-import com.jufarangoma.melitests.domain.repositories.DomainExceptionRepository
+import com.jufarangoma.melitests.utils.manageCommonException
 import java.net.HttpURLConnection
 import retrofit2.HttpException
 
-class ExampleDomainExceptionRepositoryImpl : CommonErrors(), DomainExceptionRepository {
+class ExampleDomainExceptionStrategy : DomainExceptionStrategy {
 
     /**
      * For the example I assume that code 409 is a reserved code to catch business logic exception,
@@ -31,7 +31,7 @@ class ExampleDomainExceptionRepositoryImpl : CommonErrors(), DomainExceptionRepo
                 else -> HttpErrorCode(exception.code(), exception.message())
             }
         } else {
-            manageCommonException(exception)
+            exception.manageCommonException()
         }
     }
 }

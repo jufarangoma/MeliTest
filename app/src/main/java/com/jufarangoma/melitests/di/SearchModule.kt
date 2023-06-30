@@ -3,7 +3,7 @@ package com.jufarangoma.melitests.di
 import androidx.lifecycle.MutableLiveData
 import com.jufarangoma.melitests.data.api.SearchApi
 import com.jufarangoma.melitests.data.repositories.SearchRepositoryImpl
-import com.jufarangoma.melitests.domain.repositories.DomainExceptionRepository
+import com.jufarangoma.melitests.domain.exceptions.DomainExceptionStrategy
 import com.jufarangoma.melitests.domain.repositories.SearchRepository
 import com.jufarangoma.melitests.presentation.viewmodels.SearchViewModel
 import dagger.Module
@@ -33,10 +33,10 @@ class SearchModule {
     @ViewModelScoped
     fun searchRepository(
         searchApi: SearchApi,
-        domainExceptionRepository: DomainExceptionRepository
+        domainExceptionStrategy: DomainExceptionStrategy
     ): SearchRepository = SearchRepositoryImpl(
         searchApi = searchApi,
-        exceptionRepository = domainExceptionRepository
+        exceptionStrategy = domainExceptionStrategy
     )
 
     @Provides

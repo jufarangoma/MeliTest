@@ -1,7 +1,7 @@
 package com.jufarangoma.melitests.data
 
 import com.google.gson.JsonParseException
-import com.jufarangoma.melitests.data.repositories.ExampleDomainExceptionRepositoryImpl
+import com.jufarangoma.melitests.data.repositories.ExampleDomainExceptionStrategy
 import com.jufarangoma.melitests.domain.exceptions.HttpErrorCode
 import com.jufarangoma.melitests.domain.exceptions.InternalServerError
 import com.jufarangoma.melitests.domain.exceptions.ParseException
@@ -21,7 +21,7 @@ import retrofit2.HttpException
 class ExampleDomainExceptionTest {
 
     private val httpException = mockk<HttpException>(relaxed = true)
-    private val exampleException = ExampleDomainExceptionRepositoryImpl()
+    private val exampleException = ExampleDomainExceptionStrategy()
 
     @Test
     fun testUnauthorized() {

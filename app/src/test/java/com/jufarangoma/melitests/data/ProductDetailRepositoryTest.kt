@@ -4,8 +4,8 @@ import com.jufarangoma.melitests.data.api.ProductDetailApi
 import com.jufarangoma.melitests.data.models.ProductDetailDTO
 import com.jufarangoma.melitests.data.repositories.ProductDetailRepositoryImpl
 import com.jufarangoma.melitests.domain.entities.ProductDetail
+import com.jufarangoma.melitests.domain.exceptions.DomainExceptionStrategy
 import com.jufarangoma.melitests.domain.exceptions.UnknownException
-import com.jufarangoma.melitests.domain.repositories.DomainExceptionRepository
 import com.jufarangoma.melitests.domain.repositories.ProductDetailRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -21,14 +21,14 @@ import org.junit.Test
 class ProductDetailRepositoryTest {
 
     private val productDetailApi = mockk<ProductDetailApi>()
-    private val domainExceptionRepository = mockk<DomainExceptionRepository>()
+    private val domainExceptionStrategy = mockk<DomainExceptionStrategy>()
     lateinit var productDetailRepository: ProductDetailRepository
 
     @Before
     fun setUp() {
         productDetailRepository = ProductDetailRepositoryImpl(
             productDetailApi,
-            domainExceptionRepository
+            domainExceptionStrategy
         )
     }
 
@@ -36,7 +36,7 @@ class ProductDetailRepositoryTest {
     fun tearDown() {
         confirmVerified(
             productDetailApi,
-            domainExceptionRepository
+            domainExceptionStrategy
         )
     }
 
@@ -68,7 +68,7 @@ class ProductDetailRepositoryTest {
     @Test
     fun productDetailFailure() = runBlocking {
         val throwable = Throwable("404 Error")
-        every { domainExceptionRepository.manageException(throwable) } returns UnknownException
+        every { domainExceptionStrategy.manageException(throwable) } returns UnknownException
         coEvery { productDetailApi.getProductDetail("Motorola_5G") } throws throwable
 
         productDetailRepository.getProductDetail("Motorola_5G").collect {
@@ -76,7 +76,7 @@ class ProductDetailRepositoryTest {
         }
 
         verify {
-            domainExceptionRepository.manageException(throwable)
+            domainExceptionStrategy.manageException(throwable)
         }
         coVerify {
             productDetailApi.getProductDetail("Motorola_5G")

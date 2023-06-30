@@ -5,8 +5,8 @@ import com.jufarangoma.melitests.data.models.Product
 import com.jufarangoma.melitests.data.models.SearchDTO
 import com.jufarangoma.melitests.data.repositories.SearchRepositoryImpl
 import com.jufarangoma.melitests.domain.entities.ProductEntity
+import com.jufarangoma.melitests.domain.exceptions.DomainExceptionStrategy
 import com.jufarangoma.melitests.domain.exceptions.UnknownException
-import com.jufarangoma.melitests.domain.repositories.DomainExceptionRepository
 import com.jufarangoma.melitests.domain.repositories.SearchRepository
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -22,14 +22,14 @@ import org.junit.Test
 class SearchRepositoryTest {
 
     private val searchApi = mockk<SearchApi>()
-    private val domainExceptionRepository = mockk<DomainExceptionRepository>()
+    private val domainExceptionStrategy = mockk<DomainExceptionStrategy>()
     private lateinit var searchRepository: SearchRepository
 
     @Before
     fun setUp() {
         searchRepository = SearchRepositoryImpl(
             searchApi,
-            domainExceptionRepository
+            domainExceptionStrategy
         )
     }
 
@@ -37,7 +37,7 @@ class SearchRepositoryTest {
     fun tearDown() {
         confirmVerified(
             searchApi,
-            domainExceptionRepository
+            domainExceptionStrategy
         )
     }
 
@@ -73,7 +73,7 @@ class SearchRepositoryTest {
     @Test
     fun searchProductException() = runBlocking {
         val throwable = Throwable("404 Error")
-        every { domainExceptionRepository.manageException(throwable) } returns UnknownException
+        every { domainExceptionStrategy.manageException(throwable) } returns UnknownException
         coEvery { searchApi.search("Motorola") } throws throwable
 
         searchRepository.search("Motorola").collect {
@@ -81,7 +81,7 @@ class SearchRepositoryTest {
         }
 
         verify {
-            domainExceptionRepository.manageException(throwable)
+            domainExceptionStrategy.manageException(throwable)
         }
         coVerify {
             searchApi.search("Motorola")

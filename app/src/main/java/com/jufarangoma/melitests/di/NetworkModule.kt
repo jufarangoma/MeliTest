@@ -1,8 +1,8 @@
 package com.jufarangoma.melitests.di
 
 import com.jufarangoma.melitests.BuildConfig
-import com.jufarangoma.melitests.data.repositories.ExampleDomainExceptionRepositoryImpl
-import com.jufarangoma.melitests.domain.repositories.DomainExceptionRepository
+import com.jufarangoma.melitests.data.repositories.ExampleDomainExceptionStrategy
+import com.jufarangoma.melitests.domain.exceptions.DomainExceptionStrategy
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,8 +27,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun domainExceptionRepository(): DomainExceptionRepository =
-        ExampleDomainExceptionRepositoryImpl()
+    fun domainExceptionRepository(): DomainExceptionStrategy =
+        ExampleDomainExceptionStrategy()
 
     @Provides
     @Singleton
